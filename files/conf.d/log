@@ -1,0 +1,13 @@
+ErrorLog /var/log/apache2/error.log
+ErrorLog syslog
+
+LogLevel warn
+
+DeflateFilterNote Input instream
+DeflateFilterNote Output outstream
+DeflateFilterNote Ratio ratio
+
+LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\" %T In:%{instream}n Out:%{outstream}n:%{ratio}npct %v" full
+CustomLog /var/log/apache2/access.log full
+CustomLog "|/usr/bin/logger -p local1.info -t apache2/access" full
+

@@ -1,0 +1,8 @@
+NameVirtualHost *:80
+
+ServerSignature On
+
+<Directory />
+    AllowOverride None
+    deny from all
+</Directory>
