@@ -20,7 +20,14 @@ class apache2 {
 
   # reduce apache2 log storage
   file { "/etc/logrotate.d/apache2":
-    source => "puppet:///apache2/apache2.logrotate"
+    source => "puppet:///apache2/apache2.logrotate",
+    require => Package[apache2]
+  }
+
+  file { "/etc/apache2/apache2.conf":
+    source => "puppet:///apache2/apache2.conf",
+    require => Package[apache2],
+    notify => Service[apache2]
   }
 
   # histoire de reloader apache2 quand la conf change
