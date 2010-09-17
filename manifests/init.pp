@@ -54,7 +54,7 @@ class apache2 {
   site { "default":
     link => "000-default",
     require => File["/var/www/default"],
-    source => "puppet:///apache2/default.conf"
+    source => ["puppet:///files/apache2/sites-available/default.${fqdn}", "puppet:///files/apache2/sites-available/default", "puppet:///apache2/default.conf"]
   }
 
   if $apache_server_admin {
