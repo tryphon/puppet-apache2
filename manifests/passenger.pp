@@ -15,5 +15,10 @@ class apache2::passenger {
 
   ruby::gem { fastthread: }
 
+  apache2::module { passenger: 
+    config => true,
+    require => Package[libapache2-mod-passenger]
+  }
+
   apache2::confd_file { passenger: }
 }
