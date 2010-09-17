@@ -1,8 +1,11 @@
 class apache2::php5 {
-  package { libapache2-mod-fcgid: }
+  include apache2::fcgid
+
   package { php5-cgi: }
 
-  apache2::confd_file { fcgid-php: }
+  apache2::confd_file { fcgid-php: 
+    require => Package[libapache2-mod-fcgid]
+  }
 
   file { "/etc/php5/cgi/conf.d/upload.ini":
     content => "upload_max_filesize = 5M\n",

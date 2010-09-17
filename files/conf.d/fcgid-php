@@ -1,6 +1,2 @@
 AddHandler fcgid-script .php
 FCGIWrapper /usr/lib/cgi-bin/php5 .php
-
-MaxRequestsPerProcess       1000
-MaxProcessCount             10
-IdleTimeout                 120
