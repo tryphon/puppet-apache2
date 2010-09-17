@@ -14,4 +14,6 @@ class apache2::passenger {
   }
 
   ruby::gem { fastthread: }
+
+  apache2::confd_file { passenger: }
 }
