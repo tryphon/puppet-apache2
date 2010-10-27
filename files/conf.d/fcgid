@@ -2,6 +2,3 @@ MaxProcessCount                 4
 IdleTimeout                     120
 IdleScanInterval                60
 DefaultMinClassProcessCount     1
-DefaultMaxClassProcessCount     1
-IPCCommTimeout                  60
-IPCConnectTimeout               60
