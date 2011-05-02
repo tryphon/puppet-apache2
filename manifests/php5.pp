@@ -12,3 +12,11 @@ class apache2::php5 {
     require => Package[php5-cgi]
   }
 }
+
+class apache2::php5::mysql {
+  package { php5-mysql: }
+}
+
+class apache2::php5::gd {
+  package { php5-gd: }
+}
