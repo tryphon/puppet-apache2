@@ -15,7 +15,8 @@ define apache2::site($link = '', $source = '', $content = false) {
     file { "/etc/apache2/sites-available/$name":
       source => $real_source,
       notify => Service[apache2],
-      require => Package[apache2]
+      require => Package[apache2],
+      links => follow
     }
   }
 
