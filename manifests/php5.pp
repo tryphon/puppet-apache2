@@ -3,6 +3,11 @@ class apache2::php5 {
 
   package { php5-cgi: }
 
+  # apache2-mpm-worker and libapache2-mod-php5 are incompatible
+  package { libapache2-mod-php5:
+    ensure => purged
+  } 
+
   apache2::confd_file { fcgid-php: 
     require => Package[libapache2-mod-fcgid]
   }
