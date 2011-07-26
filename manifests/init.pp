@@ -18,6 +18,13 @@ class apache2 {
   # configuration de base (log, ...)
   confd_file { ["base","log","serverstatus"]: }
 
+  # Create useless other_vhosts_access.log
+  file { "/etc/apache2/conf.d/other-vhosts-access-log":
+    ensure => absent,
+    notify => Service[apache2],
+    require => Package[apache2]
+  }
+
   # reduce apache2 log storage
   file { "/etc/logrotate.d/apache2":
     source => "puppet:///apache2/apache2.logrotate",
