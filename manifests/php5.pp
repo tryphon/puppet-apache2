@@ -18,10 +18,6 @@ class apache2::php5 {
   }
 }
 
-class apache2::php5::mysql {
-  package { php5-mysql: }
-}
-
 class apache2::php5::gd {
   package { php5-gd: }
 }
