@@ -27,7 +27,7 @@ class apache2 {
 
   # reduce apache2 log storage
   file { "/etc/logrotate.d/apache2":
-    source => "puppet:///apache2/apache2.logrotate",
+    source => ["puppet:///files/apache2/apache2.logrotate.${fqdn}", "puppet:///apache2/apache2.logrotate"],
     require => Package[apache2]
   }
 
