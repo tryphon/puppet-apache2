@@ -51,7 +51,16 @@ class apache2 {
     ensure => present
   }
 
-  file { ["/var/www","/var/www/default"]:
+  # ensure => directory removes symlinks ...
+  exec { "create-var-www-if-needed":
+    command => "mkdir /var/www",
+    creates => "/var/www"
+  }
+  file { "/var/www":
+    require => Exec["create-var-www-if-needed"]
+  }
+
+  file { "/var/www/default":
     ensure => directory
   }
   file { "/var/www/default/index.html":
