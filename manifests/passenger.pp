@@ -25,4 +25,17 @@ class apache2::passenger {
   }
 
   apache2::confd_file { passenger: }
+
+  include apache2::passenger::munin
+}
+
+class apache2::passenger::munin {
+  munin::plugin { passenger_memory:
+    source => "puppet:///apache2/munin/passenger_memory",
+    config => "user root" 
+  }       
+  munin::plugin { passenger_status:
+    source => "puppet:///apache2/munin/passenger_status",
+    config => "user root" 
+  }       
 }
