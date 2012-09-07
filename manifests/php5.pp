@@ -9,7 +9,7 @@ class apache2::php5 {
   } 
 
   apache2::confd_file { fcgid-php: 
-    require => Package[libapache2-mod-fcgid]
+    require => [Package[libapache2-mod-fcgid], Package[php5-cgi]]
   }
 
   file { "/etc/php5/cgi/conf.d/upload.ini":
