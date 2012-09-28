@@ -37,6 +37,12 @@ class apache2 {
     notify => Service[apache2]
   }
 
+  file { "/etc/apache2/ports.conf":
+    source => ["puppet:///files/apache2/ports.conf.${fqdn}", "puppet:///apache2/ports.conf"],
+    require => Package[apache2],
+    notify => Service[apache2]
+  }
+
   # histoire de reloader apache2 quand la conf change
   # fonctionne partiellement
   file { "/etc/apache2":
