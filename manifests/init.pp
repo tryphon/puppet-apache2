@@ -33,8 +33,13 @@ class apache2 {
 
   file { "/etc/apache2/apache2.conf":
     source => "puppet:///apache2/apache2.conf",
-    require => Package[apache2],
+    require => [Package[apache2], File["/etc/apache2/httpd.conf"]],
     notify => Service[apache2]
+  }
+
+  file { "/etc/apache2/httpd.conf":
+    ensure => present,
+    require => Package[apache2]
   }
 
   file { "/etc/apache2/ports.conf":
