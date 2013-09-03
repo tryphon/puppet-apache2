@@ -1,5 +1,3 @@
-NameVirtualHost *:80
-
 ServerSignature On
 
 <Directory />
