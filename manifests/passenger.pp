@@ -20,9 +20,8 @@ class apache2::passenger {
 
     apt::sources_list { "passenger":
       content => "deb https://oss-binaries.phusionpassenger.com/apt/passenger ${debian::release} main",
-      require => Apt::Key["AC40B2F7"],
-      before => Package[libapache2-mod-passenger],
-      require => Package[apt-transport-https]
+      require => [Apt::Key["AC40B2F7"], Package[apt-transport-https]],
+      before => Package[libapache2-mod-passenger]
     }
 
     apt::key { "AC40B2F7":
