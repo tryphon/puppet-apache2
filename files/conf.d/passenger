@@ -1,0 +1,9 @@
+PassengerDefaultUser www-data
+PassengerUserSwitching off
+
+PassengerMaxPoolSize 3
+PassengerMaxInstancesPerApp 3
+PassengerMaxRequests 10000
+PassengerPoolIdleTime 600
+
+PassengerLogFile /var/log/apache2/passenger.log
