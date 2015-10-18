@@ -3,9 +3,9 @@ import "definitions/*.pp"
 
 class apache2 {
 
-  package { apache2-mpm-worker: 
+  package { apache2-mpm-worker:
     alias => apache2,
-    ensure => installed 
+    ensure => installed
   }
 
   service { apache2:
@@ -46,6 +46,12 @@ class apache2 {
     source => ["puppet:///files/apache2/ports.conf.${fqdn}", "puppet:///apache2/ports.conf"],
     require => Package[apache2],
     notify => Service[apache2]
+  }
+
+  # Additional MIME types to default list
+  file { '/etc/apache2/conf.d/mime_types':
+    source => 'puppet:///apache2/mime_types.conf',
+    require => Package['apache2']
   }
 
   # histoire de reloader apache2 quand la conf change
