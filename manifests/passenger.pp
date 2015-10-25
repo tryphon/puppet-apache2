@@ -3,7 +3,7 @@ class apache2::passenger {
   include apt::backports
   include ruby::gems
 
-  package { libapache2-mod-passenger:
+  package { 'libapache2-mod-passenger':
     require => Package[apache2]
   }
 
@@ -27,6 +27,18 @@ class apache2::passenger {
     apt::key { "AC40B2F7":
       source => "puppet:///apache2/passenger/phusion.key"
     }
+  }
+
+  file { '/var/www/.passenger':
+    ensure => directory,
+    owner => www-data,
+    require => Package['libapache2-mod-passenger']
+  }
+
+  file { '/var/log/apache2/passenger.log':
+    ensure => present,
+    owner => www-data,
+    require => Package['libapache2-mod-passenger']
   }
 
   ruby::gem { fastthread: }
