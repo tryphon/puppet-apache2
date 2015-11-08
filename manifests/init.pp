@@ -107,6 +107,6 @@ class apache2::munin {
     [apache_accesses, apache_processes, apache_volume]:
     require => Package[libwww-perl]
   }
-  package { libwww-perl: }
 
+  include perl::lib::www
 }
