@@ -16,7 +16,7 @@ class apache2 {
   }
 
   # configuration de base (log, ...)
-  confd_file { ["base","log","serverstatus"]: }
+  confd_file { ["base","log","serverstatus","fqdn"]: }
 
   # Create useless other_vhosts_access.log
   file { "/etc/apache2/conf.d/other-vhosts-access-log":
