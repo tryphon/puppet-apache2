@@ -1,4 +1,4 @@
-define apache2::proxy_site($target, $preserve_host = true, $content = '', $ensure = 'present', $authentication = false, $ssl = false) {
+define apache2::proxy_site($target, $preserve_host = true, $content = '', $ensure = 'present', $authentication = false, $ssl = false, $aliases = []) {
   include apache2::proxy::http
 
   site { $name:
