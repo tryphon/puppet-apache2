@@ -18,6 +18,11 @@ class apache2 {
   # configuration de base (log, ...)
   confd_file { ["base","log","serverstatus","fqdn"]: }
 
+  require apache2::common
+}
+
+class apache2::common {
+
   # Create useless other_vhosts_access.log
   file { "/etc/apache2/conf.d/other-vhosts-access-log":
     ensure => absent,
