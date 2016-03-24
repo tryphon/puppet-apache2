@@ -19,6 +19,6 @@ define apache24::proxy_site($target, $preserve_host = true, $content = '', $ensu
   }
 
   if $authentication {
-    File['/etc/apache2/htpasswd'] -> Apache2::Site[$name]
+    File['/etc/apache2/htpasswd'] -> Apache24::Site[$name]
   }
 }
