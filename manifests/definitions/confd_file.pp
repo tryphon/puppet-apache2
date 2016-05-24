@@ -15,10 +15,10 @@ define apache2::confd_file($source = '', $content = false, $version = 22) {
     }
   } else {
     $real_source = $source ? {
-      '' => ["puppet:///files/apache2/conf_d/$name.$fqdn", "puppet:///files/apache2/conf.d/$name", "puppet:///apache2/conf.d/$name"],
+      '' => ["puppet:///files/apache2/conf.d/$name.$fqdn", "puppet:///files/apache2/conf.d/$name", "puppet:///apache2/conf.d/$name"],
       default => $source
     }
-  
+
     file { "/etc/apache2/$conf_dir/$real_name":
       source => $real_source,
       notify => Service[apache2],
