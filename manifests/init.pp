@@ -37,7 +37,7 @@ class apache2::common ($version = 22) {
 
   # reduce apache2 log storage
   file { "/etc/logrotate.d/apache2":
-    source => ["puppet:///files/apache2/apache2.logrotate.${fqdn}", "puppet:///apache2/apache2.logrotate"],
+    source => ["puppet:///files/apache2/apache2.logrotate.${fqdn}", "puppet:///modules/apache2/apache2.logrotate"],
     require => Package[apache2],
     mode => 644
   }
@@ -47,7 +47,7 @@ class apache2::common ($version = 22) {
     24 => 'apache24.conf',
   }
   file { "/etc/apache2/apache2.conf":
-    source => "puppet:///apache2/$apache2_conf",
+    source => "puppet:///modules/apache2/apache2.conf",
     require => [Package[apache2], File["/etc/apache2/httpd.conf"]],
     notify => Service[apache2]
   }
@@ -58,7 +58,7 @@ class apache2::common ($version = 22) {
   }
 
   file { "/etc/apache2/ports.conf":
-    source => ["puppet:///files/apache2/ports.conf.${fqdn}", "puppet:///apache2/ports.conf"],
+    source => ["puppet:///files/apache2/ports.conf.${fqdn}", "puppet:///modules/apache2/ports.conf"],
     require => Package[apache2],
     notify => Service[apache2]
   }
@@ -69,7 +69,7 @@ class apache2::common ($version = 22) {
   }
   # Additional MIME types to default list
   file { "/etc/apache2/$conf_dir/$mime_types_name":
-    source => 'puppet:///apache2/mime_types.conf',
+    source => 'puppet:///modules/apache2/mime_types.conf',
     require => Package['apache2']
   }
 
@@ -106,7 +106,7 @@ class apache2::common ($version = 22) {
   site { "default":
     link => "000-default",
     require => File["/var/www/default"],
-    source => ["puppet:///files/apache2/sites-available/default.${fqdn}", "puppet:///files/apache2/sites-available/default", "puppet:///apache2/default.conf"]
+    source => ["puppet:///files/apache2/sites-available/default.${fqdn}", "puppet:///files/apache2/sites-available/default", "puppet:///modules/apache2/default.conf"]
   }
 
   if $apache_server_admin {
