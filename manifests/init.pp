@@ -47,7 +47,7 @@ class apache2::common ($version = 22) {
     24 => 'apache24.conf',
   }
   file { "/etc/apache2/apache2.conf":
-    source => "puppet:///modules/apache2/apache2.conf",
+    source => "puppet:///modules/apache2/$apache2_conf",
     require => [Package[apache2], File["/etc/apache2/httpd.conf"]],
     notify => Service[apache2]
   }
