@@ -1,4 +1,4 @@
-define apache2::proxy_site($target, $preserve_host = true, $content = '', $ensure = 'present', $authentication = false, $ssl = false, $aliases = []) {
+define apache2::proxy_site($target, $preserve_host = true, $content = '', $ensure = 'present', $authentication = false, $ssl = false, $force_ssl = false, $aliases = []) {
   include apache2::proxy::http
 
   site { $name:
@@ -10,7 +10,7 @@ define apache2::proxy_site($target, $preserve_host = true, $content = '', $ensur
     File['/etc/apache2/htpasswd'] -> Site[$name]
   }
 }
-define apache24::proxy_site($target, $preserve_host = true, $content = '', $ensure = 'present', $authentication = false, $ssl = false, $aliases = []) {
+define apache24::proxy_site($target, $preserve_host = true, $content = '', $ensure = 'present', $authentication = false, $ssl = false, $force_ssl = false, $aliases = []) {
   include apache2::proxy::http
 
   apache24::site { $name:
