@@ -13,7 +13,9 @@ class apache2 {
   }
 
   # configuration de base (log, ...)
-  apache2::confd_file { ["base","log","serverstatus","fqdn"]: }
+  apache2::confd_file { ["base","log","serverstatus","fqdn"]: 
+    version => 22,
+  }
 
   include apache2::common
 }
