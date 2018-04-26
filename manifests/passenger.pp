@@ -1,5 +1,5 @@
 class apache2::passenger {
-  include apache24
+  include apache2
   include apt::backports
   include ruby::gems
 
