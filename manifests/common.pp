@@ -1,5 +1,5 @@
 class apache2::common (
-  $version = 24,
+  $version = 22,
   $apache_server_admin = '',
   $replace_default = false,
   $default_vhost ='apache2/default.conf') {
