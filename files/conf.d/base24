@@ -1,0 +1,5 @@
+ServerSignature On
+
+<Directory />
+  Require all denied
+</Directory>
