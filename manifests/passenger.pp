@@ -32,27 +32,3 @@ class apache2::passenger {
 
   include apache2::passenger::munin
 }
-
-class apache2::passenger::apt {
-  include apt::https
-
-  apt::sources_list { "passenger":
-    content => "deb https://oss-binaries.phusionpassenger.com/apt/passenger ${debian::release} main",
-    require => [Apt::Key["AC40B2F7"], Package[apt-transport-https]]
-  }
-
-  apt::key { "AC40B2F7":
-    source => "puppet:///apache2/passenger/phusion.key"
-  }
-}
-
-class apache2::passenger::munin {
-  munin::plugin { passenger_memory:
-    source => "puppet:///modules/apache2/munin/passenger_memory",
-    config => "user root"
-  }
-  munin::plugin { passenger_status:
-    source => "puppet:///modules/apache2/munin/passenger_status",
-    config => "user root"
-  }
-}

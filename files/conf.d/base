@@ -1,6 +1,5 @@
 ServerSignature On
 
 <Directory />
-    AllowOverride None
-    deny from all
+  Require all denied
 </Directory>

@@ -1,4 +1,4 @@
-define apache2::confd_file($source = '', $content = false, $version = 22) {
+define apache2::confd_file($source = '', $content = false, $version = 24) {
   $real_name = $version ? {
     22 => $name,
     24 => "$name.conf"
@@ -15,7 +15,7 @@ define apache2::confd_file($source = '', $content = false, $version = 22) {
     }
   } else {
     $real_source = $source ? {
-      '' => ["puppet:///files/apache2/conf.d/$name.$fqdn", "puppet:///files/apache2/conf.d/$name", "puppet:///apache2/conf.d/$name"],
+      '' => "puppet:///modules/apache2/conf.d/$name",
       default => $source
     }
 
