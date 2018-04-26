@@ -2,7 +2,7 @@ define apache2::proxy_site($target, $preserve_host = true, $content = '', $ensur
   include apache2::proxy_http
 
   site { $name:
-    content => template("apache2/reverse-proxy.conf"),
+    content => template("apache2/reverse-proxy-24.conf"),
     ensure  => $ensure,
   }
 
